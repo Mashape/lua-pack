@@ -1,4 +1,4 @@
-require"pack"
+require"lua_pack"
 
 bpack=string.pack
 bunpack=string.unpack
@@ -8,13 +8,13 @@ function hex(s)
  return s
 end
 
-a=bpack("Ab8","\027Lua",5*16+1,0,1,4,4,4,8,0)
+a=bpack("AC8","\027Lua",5*16+1,0,1,4,4,4,8,0)
 print(hex(a),string.len(a))
 
 b=string.dump(hex)
 b=string.sub(b,1,string.len(a))
 print(a==b,string.len(b))
-print(bunpack(b,"bA3b8"))
+print(bunpack(b,"CA3C8"))
 
 i=314159265 f="<I>I=I"
 a=bpack(f,i,i,i)
