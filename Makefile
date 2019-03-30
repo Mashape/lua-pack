@@ -11,7 +11,7 @@ CFLAGS ?= -std=c99 -O2 -Wall -Werror
 all: lua_pack.so
 
 lua_pack.so: lua_pack.o
-	$(CC) $(LIBFLAG) $(LUA_LIBDIR) -o $@
+	$(CC) $(LIBFLAG) $(LUA_LIBDIR) -o $@ $^
 	$(LUA) test.lua
 
 
