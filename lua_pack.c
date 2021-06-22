@@ -384,11 +384,13 @@ static const luaL_Reg R[] =
 
 int luaopen_lua_pack(lua_State *L)
 {
-#ifdef USE_GLOBALS
- lua_register(L,"bpack",l_pack);
- lua_register(L,"bunpack",l_unpack);
-#else
- luaL_openlib(L, LUA_STRLIBNAME, R, 0);
-#endif
- return 0;
+ lua_newtable(L);
+
+ lua_pushcfunction(L, &l_pack);
+ lua_setfield(L, -2, "pack");
+
+ lua_pushcfunction(L, &l_unpack);
+ lua_setfield(L, -2, "unpack");
+
+ return 1;
 }
